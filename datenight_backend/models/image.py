@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth import User
+from django.contrib.auth.models import User
 
 class Image(models.Model):
     img_url = models.ImageField(upload_to='imgs/')
