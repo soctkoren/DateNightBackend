@@ -9,3 +9,4 @@ from .travel_node import TravelNode
 # join tables
 from .featured_date import FeaturedDate
 from .date_tag import DateTag
+from .favorite_date import FavoriteDate
