@@ -12,3 +12,4 @@ from .date_tag import DateTag
 from .favorite_date import FavoriteDate
 from .user_date import UserDate
 from .favorite_node import FavoriteNode
+from .favorite_comment import FavoriteComment
