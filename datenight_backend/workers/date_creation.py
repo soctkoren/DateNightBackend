@@ -17,5 +17,7 @@ def create_draft(user_id):
     return draft.id
 
 def get_date(date_id):
-    date = Date.objects.get(pk=date_id)
-    return date
+    return Date.objects.get(pk=date_id)
+
+def get_user_id_from_date(date_id):
+    return UserDate.objects.get(user_date_id=date_id)

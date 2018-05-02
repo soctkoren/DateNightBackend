@@ -22,6 +22,8 @@ def initialize_create_flow(request):
 def date(request):
     date_id = request.GET.get('date_id', '')
     date = get_date(date_id)
+    user_date = get_user_id_from_date(date_id)
     response = {}
     response['date'] = date.create_payload()
+    response['user_id'] = user_date.user_id
     return JsonResponse(response)
