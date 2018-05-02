@@ -21,3 +21,12 @@ def get_date(date_id):
 
 def get_user_id_from_date(date_id):
     return UserDate.objects.get(user_date_id=date_id)
+
+# images
+def create_img(img, user_id):
+    user = User.objects.get(pk=user_id)
+    new_img = Image(img_url=img, user=user)
+    new_img.save()
+    print(new_img.img_url)
+    hmm = {'img': new_img.pk}
+    return hmm

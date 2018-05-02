@@ -1,27 +1,33 @@
-{% extends "base_generic.html" %}
-
-{% block content %}
+{% extends "base_generic.html" %} {% block content %}
 
 <form method="post" action="{% url 'initialize_create_flow' %}">
-{% csrf_token %}
-
-<div>
-  <p>Test initialize_create_flow</p>
-  <input type="text" name="user_id"/>
-  <input type="submit"/>
-</div>
+  {% csrf_token %}
+  <div>
+    <p>Test initialize_create_flow</p>
+    <input type="text" name="user_id" />
+    <input type="submit" />
+  </div>
 
 </form>
 
 <form method="get" action="{% url 'date' %}">
-{% csrf_token %}
+  {% csrf_token %}
+  <div>
+    <p>Test get date</p>
+    <input type="text" name="date_id" />
+    <input type="submit" />
+  </div>
 
-<div>
-  <p>Test get date</p>
-  <input type="text" name="date_id"/>
-  <input type="submit"/>
-</div>
+</form>
 
+<form method="post" enctype="multipart/form-data" action="{% url 'upload_img' %}">
+  {% csrf_token %}
+  <div>
+    <p>Test img upload</p>
+    <input type="file" name="date_img">
+    <input type="text" name="user_id">
+    <button type="submit">Upload</button>
+  </div>
 </form>
 
 {% endblock %}
