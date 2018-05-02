@@ -13,3 +13,5 @@ from .favorite_date import FavoriteDate
 from .user_date import UserDate
 from .favorite_node import FavoriteNode
 from .favorite_comment import FavoriteComment
+
+# TODO need to add user settings and address table later

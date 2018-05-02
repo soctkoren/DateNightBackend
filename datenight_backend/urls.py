@@ -1,7 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 
-from . import views
+from datenight_backend.apis.v1 import *
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', index, name='index'),
+    path('initialize_create_flow', initialize_create_flow, name='initialize_create_flow'),
+    path('date', date, name='date'),
 ]
