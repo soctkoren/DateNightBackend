@@ -20,12 +20,14 @@
 
 </form>
 
-<form method="post" enctype="multipart/form-data" action="{% url 'upload_img' %}">
+<form method="post" enctype="multipart/form-data" action="{% url 'upload_date_hero_img' %}">
   {% csrf_token %}
   <div>
     <p>Test img upload</p>
     <input type="file" name="date_img">
     <input type="text" name="user_id">
+    <label>date id</label>
+    <input type="text" name="date_id">
     <button type="submit">Upload</button>
   </div>
 </form>

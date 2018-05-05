@@ -12,3 +12,6 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+imgs/
+.DS_Store
+test.js

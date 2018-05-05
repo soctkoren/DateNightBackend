@@ -19,10 +19,11 @@ def initialize_create_flow(request):
     response['user_id'] = user_id
     return JsonResponse(response)
 
-def upload_img(request):
+def upload_date_hero_img(request):
     user_id = request.POST.get('user_id')
-    date_img = request.POST.get('date_img')
-    response = create_img(date_img, user_id)
+    date_img = request.FILES['date_img']
+    date_id = request.POST.get('date_id')
+    response = create_date_hero_img(date_img, user_id, date_id)
     return JsonResponse(response)
 
 def date(request):
