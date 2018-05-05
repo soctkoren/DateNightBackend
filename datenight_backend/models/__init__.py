@@ -5,6 +5,7 @@ from .node import Node
 from .comment import Comment
 from .destination_node import DestinationNode
 from .travel_node import TravelNode
+from .address import Address
 
 # join tables
 from .featured_date import FeaturedDate
