@@ -26,6 +26,16 @@ def upload_date_hero_img(request):
     response = create_date_hero_img(date_img, user_id, date_id)
     return JsonResponse(response)
 
+def node(request):
+    date_id = request.POST.get('date_id')
+    order_number = request.POST.get('order_num')
+    node_type = request.POST.get('node_type')
+    address = request.POST.get('address')
+    user_id = request.POST.get('user_id')
+    is_hidden = False
+    response = create_node(date_id, order_number, node_type, is_hidden, address, user_id)
+    return JsonResponse(response)
+
 def date(request):
     date_id = request.GET.get('date_id', '')
     date = get_date(date_id)

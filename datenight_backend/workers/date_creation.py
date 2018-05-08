@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from datenight_backend.workers.serializer import serialize_for_json
 from datenight_backend.models.image import Image
 from datenight_backend.models.date import Date
 from datenight_backend.models.user_date import UserDate
@@ -6,8 +7,10 @@ from datenight_backend.models.tag import Tag
 from datenight_backend.models.date_tag import DateTag
 from datenight_backend.models.featured_date import FeaturedDate
 from datenight_backend.models.favorite_date import FavoriteDate
+from datenight_backend.models.destination_node import DestinationNode
+from datenight_backend.models.travel_node import TravelNode
 from datenight_backend.models.node import Node
-from django.core import serializers
+from datenight_backend.models.address import Address
 from django.forms.models import model_to_dict
 import json
 
@@ -33,8 +36,20 @@ def create_date_hero_img(img, user_id, date_id):
     date = Date.objects.get(pk=date_id)
     date.image = new_img
     date.save()
-    data = serializers.serialize('json', [new_img])
-    struct = json.loads(data)
-    data = json.dumps(struct[0])
+    data = serialize_for_json(new_img)
     payload = {'img': new_img.pk, 'data': data, 'date_id': date.pk}
+    return payload
+
+def create_node(date_id, order_number, node_type, is_hidden, address, user_id):
+    date = Date.objects.get(pk=date_id)
+    new_node = Node(order_number=order_number, is_hidden=is_hidden, date=date)
+    new_node.save()
+    new_address = Address(address=address, user_id=user_id)
+    new_address.save()
+    node_content = DestinationNode(description='', node=new_node, destination_address=new_address)
+    node_content.save()
+
+    payload = new_node.create_payload()
+    payload['destination'] = node_content.create_payload()
+    payload['node_type'] = node_type
     return payload

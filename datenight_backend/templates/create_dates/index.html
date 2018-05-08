@@ -32,4 +32,20 @@
   </div>
 </form>
 
+<form method="post" action="{% url 'node' %}">
+  {% csrf_token %}
+  <label for="date_id">date_id</label>
+  <input type="text" name="date_id">
+  <label for="order_num">order_numb</label>
+  <input type="number" name="order_num">
+  <label for="node_type">node_type</label>
+  <input type="node_type" name="node_type">
+  <label for="address">address</label>
+  <input type="address" name="address">
+  <label for="user_id">user_id</label>
+  <input type="user_id" name="user_id">
+  <button type="submit">Upload</button>
+</form>
+
+
 {% endblock %}
